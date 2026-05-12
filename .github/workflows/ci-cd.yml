@@ -29,7 +29,7 @@ jobs:
       - name: Build and test with Maven 
         run: mvn --batch-mode clean verify 
   
-      # 4) Run SonarQube Cloud analysis sdfsdf
+      # 4) Run SonarQube Cloud analysis 
       - name: SonarQube Cloud scan 
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
@@ -40,8 +40,8 @@ jobs:
         if: github.event_name == 'push' 
         uses: docker/login-action@v3 
         with: 
-          username: ${{ secrets.abdulrahmansuliman }} 
-          password: ${{ secrets.dckr_pat_4BLd28IPNccCPvyeYjcls8LqiFY }} 
+          username: ${{ secrets.DOCKERHUB_USERNAME }} 
+          password: ${{ secrets.DOCKERHUB_TOKEN }} 
   
       # 6) Build the Docker image and push it to Docker Hub 
       - name: Build and push Docker image 
